@@ -11,18 +11,19 @@ package org.example
  */
 class Solution1 {
     fun addTwoNumbers(l1: ListNode, l2: ListNode): ListNode {
-        while (l1.next != null || l2.next != null) {
-
-        }
-        return TODO()
+        val sum = convertToNum(l1) + convertToNum(l2)
+        val fl = convertToLinkedList(sum)
+        return fl
     }
 }
 fun main(){
-    val l1 = convertToLinkedList(342)
+    val l1 = convertToLinkedList(3426)
     val l2 = convertToLinkedList(465)
-    // println(l1)
-    // println(l2)
-    println(convertToNum(l1))
+    println(l1)
+    println(l2)
+    val solution = Solution1()
+    val result = solution.addTwoNumbers(l1, l2)
+    println("Result: $result")
 }
 
 fun convertToLinkedList(num: Int): ListNode {
