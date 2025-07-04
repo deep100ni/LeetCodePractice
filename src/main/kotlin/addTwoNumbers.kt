@@ -11,29 +11,34 @@ package org.example
  */
 class Solution1 {
     fun addTwoNumbers(l1: ListNode, l2: ListNode): ListNode {
-        var a: ListNode? = l1
-        var b: ListNode? = l2
+        var p1: ListNode? = l1
+        var p2: ListNode? = l2
         var carry = 0
-        var curr: ListNode? = null
-        var res: ListNode? = null
-        while (a != null || b != null){
-            val sum = (a?.`val` ?: 0) + (b?.`val` ?: 0) + carry
-            val node = ListNode(sum % 10)
-            carry = sum/10
-            if (curr == null){
-                curr  = node
-                res = node
-            }else{
-                curr.next = node
-                curr = node
+        var resultHead: ListNode? = null
+        var current: ListNode? = null
+
+        while (p1 != null || p2 != null) {
+            val sum = (p1?.`val` ?: 0) + (p2?.`val` ?: 0) + carry
+            carry = sum / 10
+            val newNode = ListNode(sum % 10)
+
+            if (current == null) {
+                resultHead = newNode
+                current = newNode
+            } else {
+                current.next = newNode
+                current = newNode
             }
-            a = a?.next
-            b = b?.next
+
+            p1 = p1?.next
+            p2 = p2?.next
         }
-        if (carry > 0)curr!!.next = ListNode(carry)
-        return res!!
 
+        if (carry > 0) {
+            current?.next = ListNode(carry)
+        }
 
+        return resultHead!!
     }
 }
 fun main(){
