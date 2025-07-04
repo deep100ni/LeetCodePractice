@@ -11,16 +11,34 @@ package org.example
  */
 class Solution1 {
     fun addTwoNumbers(l1: ListNode, l2: ListNode): ListNode {
-        val sum = convertToNum(l1) + convertToNum(l2)
-        val fl = convertToLinkedList(sum)
-        return fl
+        var a: ListNode? = l1
+        var b: ListNode? = l2
+        var carry = 0
+        var curr: ListNode? = null
+        var res: ListNode? = null
+        while (a != null || b != null){
+            val sum = (a?.`val` ?: 0) + (b?.`val` ?: 0) + carry
+            val node = ListNode(sum % 10)
+            carry = sum/10
+            if (curr == null){
+                curr  = node
+                res = node
+            }else{
+                curr.next = node
+                curr = node
+            }
+            a = a?.next
+            b = b?.next
+        }
+        if (carry > 0)curr!!.next = ListNode(carry)
+        return res!!
+
+
     }
 }
 fun main(){
-    val l1 = convertToLinkedList(3426)
-    val l2 = convertToLinkedList(465)
-    println(l1)
-    println(l2)
+    val l1 = convertToLinkedList(9999)
+    val l2 = convertToLinkedList(1)
     val solution = Solution1()
     val result = solution.addTwoNumbers(l1, l2)
     println("Result: $result")
