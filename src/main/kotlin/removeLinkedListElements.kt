@@ -5,7 +5,7 @@ class Solution2 {
         var p1: ListNode? = head
         var resultHead: ListNode? = null
         while (p1 != null){
-            if (p1.'val' == num){
+            if (p1.`val` == num){
                 p1 = p1.next!!
             }else{
                 resultHead = p1
@@ -15,3 +15,13 @@ class Solution2 {
     }
 
 }
+
+fun main(){
+    val l1 = convertToLinkedList(76198716)
+    val num = 1
+    val solution = Solution2()
+    val result = solution.addTwoNumbers(l1,num)
+    println(l1)
+    println("Result: $result")
+}
+
