@@ -2,7 +2,7 @@ package org.example
 
 class Solution2 {
     fun removeLinkedListElements(head: ListNode?, num: Int): ListNode? {
-        val linkedList = ListNode(0)
+        val linkedList = ListNode(0)  // 1->1->2->2->1,1
         linkedList.next = head
         var current = linkedList
 
@@ -16,15 +16,30 @@ class Solution2 {
 
         return linkedList.next
     }
+    fun replaceLinkedListElements(head: ListNode?, num: Int, replacement : Int): ListNode? {
+        val linkedList = ListNode(0)  // 1->1->2->2->1,1,9
+        linkedList.next = head
+        var current = linkedList
+
+        while (current.next != null) {
+            if (current.next!!.`val` == num) {
+                current.next = ListNode(replacement)
+            } else {
+                current = current.next!!
+            }
+        }
+
+        return linkedList.next
+    }
 }
 
 
 fun main(){
-    val l1 = convertToLinkedList1(76198716)
-    val num = 1
+    val l1 = convertToLinkedList1(77777616)
+    val num = 7
     println(l1)
     val solution = Solution2()
-    val result = solution.removeLinkedListElements(l1,num)
+    val result = solution.replaceLinkedListElements(l1,num,3)
     println("Result: $result")
 }
 
