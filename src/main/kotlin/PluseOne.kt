@@ -1,16 +1,16 @@
 package org.example
 
 fun plusOne(digits: IntArray): IntArray {
-    var resNum = intArrayToNumber(digits)
-    resNum = resNum + 1
-    var resArr = numberToIntArray(resNum)
-    return resArr
+    for(i in digits.size - 1 downTo 0){
+        if(digits[i] < 9){
+            digits[i]++
+            return digits
+        }else{
+            digits[i] = 0
+        }
+    }
+    val arr = IntArray(digits.size +1)
+    arr[0] = 1
+    return arr
 }
 
-fun numberToIntArray(num: Int): IntArray {
-    return num.toString().map { it.toString().toInt() }.toIntArray()
-}
-
-fun intArrayToNumber(arr: IntArray): Int {
-    return arr.joinToString("").toInt()
-}
